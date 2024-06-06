@@ -11,4 +11,11 @@ class TaskController extends Controller
     {
         return view('tasks.index')->with('tasks', Task::all());
     }
+
+    public function store(Request $request)
+    {
+        $task = Task::create($request->only(['title', 'description']));
+
+         return response($task);
+    }
 }
